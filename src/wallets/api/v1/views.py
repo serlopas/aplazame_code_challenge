@@ -1,9 +1,10 @@
 from rest_framework import permissions, generics
-
 from wallets import models
 from wallets import permissions as wallets_permissions
-from wallets.api.v1 import serializers as wallets_serializers
-from operations import serializers as operations_serializers
+from wallets.api.v1.serializers import (
+    operations_serializers,
+    wallets_serializers,
+)
 
 
 class WalletsView(generics.ListCreateAPIView):
