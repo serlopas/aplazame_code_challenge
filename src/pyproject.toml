@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "code challenge"
+version = "0.0.1"
+description = "Code challenge"
+authors = ["Sergio <serlopas@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "*"
+djangorestframework = "*"
+djangorestframework-simplejwt = "*"
+django-extensions = "*"
+psycopg2-binary = "*"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "*"
+django-debug-toolbar = "*"
+flake8 = "*"
+pytest = "*"
+pytest-django = "*"
+pytest-cov = "*"
+factory_boy = "*"
+Faker = "*"
+exam = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

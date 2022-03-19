@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  # PostgreSQL
+  db:
+    image: postgres:latest
+    hostname: db
+    environment:
+      - POSTGRES_USER=postgresuser
+      - POSTGRES_PASSWORD=postgrespassword
+      - POSTGRES_DB=postgres
+    ports:
+      - '5432:5432'
+
+  # Django
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: web
+    command: sh /usr/local/bin/django_run.sh
+    volumes:
+      - ./:/app
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    env_file:
+      - .env.default
+      - .env
+
+  # Nginx
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - web

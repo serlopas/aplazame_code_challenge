@@ -1,0 +1,1 @@
+USER_PASSWORD_TEST = '8%@n+yA63Zs-S_;GtY7v3ta%V=-]X/pV'
