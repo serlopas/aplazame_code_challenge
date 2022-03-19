@@ -1,7 +1,7 @@
 from django.urls import reverse
 from rest_framework import status
 
-from core.tests.api import BaseViewTest
+from core.api_tests_helper.api import BaseViewTest
 from operations import factories
 
 
