@@ -16,17 +16,7 @@ COPY src/pyproject.toml $HOMEDIR/pyproject.toml
 COPY src/poetry.lock $HOMEDIR/poetry.lock
 
 RUN apt-get update && apt-get install --assume-yes --no-install-recommends \
-    gdal-bin \
-    curl \
-    gettext \
-    libcairo2 \
-    libpango1.0-0 \
-    libpango1.0-dev \
     make \
-    libsasl2-dev \
-    libsasl2-modules \
-    libssl-dev \
-    gnupg2 \
   && pip install --upgrade pip \
   && pip install poetry \
   && poetry config virtualenvs.create false \

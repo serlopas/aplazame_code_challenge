@@ -22,6 +22,7 @@ pytest-cov = "*"
 factory_boy = "*"
 Faker = "*"
 exam = "*"
+drf-yasg = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
