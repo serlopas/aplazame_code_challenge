@@ -23,11 +23,11 @@ class TestWalletsView(BaseViewTest):
                 )
 
     def test_get_customer_operations(self):
-        factories.OperationFactory(
+        factories.OperationChargeFactory(
             wallet_from=self.get_customer_with_wallet.wallets.first(),
             wallet_to=self.get_commerce_with_wallet.wallets.first(),
         )
-        factories.OperationFactory()
+        factories.OperationChargeFactory()
 
         test_data_list = (
             ('Customer', self.get_signed_customer_with_wallet, ),

@@ -8,7 +8,7 @@ from operations.api.v1 import serializers
 class TestOperationsSerializer(TestCase):
 
     def test_serializer(self):
-        operation = factories.OperationFactory()
+        operation = factories.OperationChargeFactory()
 
         expected_result = {
             'operation_type': operation.operation_type,
