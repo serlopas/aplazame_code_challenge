@@ -2,7 +2,7 @@ from django.urls import reverse
 from faker import Faker
 from rest_framework import status
 
-from core.tests.api import BaseViewTest
+from core.api_tests_helper.api import BaseViewTest
 
 
 class TestWalletsView(BaseViewTest):
