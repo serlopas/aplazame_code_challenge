@@ -22,7 +22,7 @@ class TestTopUpOperation(TestCase):
         )
         wallet = wallets_factories.WalletFactory(balance=balance)
 
-        services.top_up(wallet, amount)
+        services.top_up(wallet.id, amount)
 
         wallet.refresh_from_db()
         self.assertEqual(wallet.balance, balance + amount)
@@ -50,7 +50,7 @@ class TestChargeOperation(TestCase):
         wallet_from = wallets_factories.WalletFactory(balance=balance_from)
         wallet_to = wallets_factories.WalletFactory(balance=balance_to)
 
-        services.charge(wallet_from, wallet_to, amount)
+        services.charge(wallet_from.id, wallet_to.id, amount)
 
         wallet_from.refresh_from_db()
         wallet_to.refresh_from_db()
@@ -76,4 +76,7 @@ class TestChargeOperation(TestCase):
         wallet_from = wallets_factories.WalletFactory(balance=balance_from)
         wallet_to = wallets_factories.WalletFactory(balance=balance_to)
 
-        self.assertRaises(NotEnoughMoneyException, services.charge, wallet_from, wallet_to, amount)
+        self.assertRaises(
+            NotEnoughMoneyException,
+            services.charge, wallet_from.id, wallet_to.id, amount
+        )
