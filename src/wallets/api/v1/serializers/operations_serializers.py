@@ -11,7 +11,7 @@ class OperationsTopUpSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data: dict) -> models.Operations:
         wallet = self.context['wallet']
-        validated_data['success'] = services.top_up(wallet, validated_data['amount'])
+        validated_data['success'] = services.top_up(wallet.id, validated_data['amount'])
         validated_data['wallet_from'] = wallet
         validated_data['operation_type'] = models.Operations.TOPUP
 
@@ -37,8 +37,8 @@ class OperationsChargeSerializer(serializers.ModelSerializer):
         wallet_from = wallets_models.Wallet.objects.get(token=validated_data.pop('wallet'))
         try:
             validated_data['success'] = services.charge(
-                wallet_from=wallet_from,
-                wallet_to=wallet_to,
+                wallet_from_id=wallet_from.id,
+                wallet_to_id=wallet_to.id,
                 amount=validated_data['amount'],
             )
         except NotEnoughMoneyException as e:
